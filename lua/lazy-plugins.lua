@@ -35,8 +35,6 @@ require('lazy').setup({
 
   require 'kickstart/plugins/blink-cmp',
 
-  require 'kickstart/plugins/tokyonight',
-
   require 'kickstart/plugins/todo-comments',
 
   require 'kickstart/plugins/mini',
@@ -52,11 +50,31 @@ require('lazy').setup({
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  -- require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
+  require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
+
+  require 'custom/plugins/snacks',
+
+  require 'custom/plugins/vim-tmux-navigator',
+
+  require 'custom/plugins/gruvbox-colorscheme',
+
+  require 'custom/plugins/base16-colorscheme',
+
+  require 'custom/plugins/oil',
+
+  require 'custom/plugins/alpha',
+
+  require 'custom/plugins/yazi',
+
+  require 'custom/plugins/nvim-colorizer',
+
+  require 'custom/plugins/bufferline',
+
+  require 'custom/plugins/render-markdown',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.

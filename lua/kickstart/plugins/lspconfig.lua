@@ -192,6 +192,19 @@ return {
         },
       }
 
+      -- Fix for clangd AST errors after file saves
+      vim.api.nvim_create_autocmd('BufWritePost', {
+        pattern = { '*.c', '*.cpp', '*.h', '*.hpp' },
+        group = vim.api.nvim_create_augroup('clangd-reload-fix', { clear = true }),
+        callback = function()
+          -- Only reload if clangd is attached to this buffer
+          local clients = vim.lsp.get_clients { bufnr = 0, name = 'clangd' }
+          if #clients > 0 then
+            vim.cmd 'silent! edit'
+          end
+        end,
+      })
+
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
       --  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
@@ -221,6 +234,13 @@ return {
         -- ts_ls = {},
         --
 
+        clangd = {
+          cmd = { 'clangd', '--background-index', '--clang-tidy', '--enable-config', '--log=verbose' },
+          init_options = {
+            fallbackFlags = { '-std=c++17' },
+          },
+        },
+        pyright = {},
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -233,6 +253,14 @@ return {
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               -- diagnostics = { disable = { 'missing-fields' } },
             },
+          },
+        },
+        markdownlint = {},
+        bashls = {
+          filetypes = {
+            'sh',
+            'bash',
+            'zsh',
           },
         },
       }
@@ -252,7 +280,14 @@ return {
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
+        'bashls',
+        'clangd',
+        'clang-format',
+        'cpplint',
+        'lua_ls',
+        'markdownlint',
         'stylua', -- Used to format Lua code
+        'beautysh',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

@@ -26,6 +26,14 @@ end)
 -- Enable break indent
 vim.o.breakindent = true
 
+-- Set auto indent
+vim.o.autoindent = true
+
+-- Convert tab to spaces
+vim.o.expandtab = true
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+
 -- Save undo history
 vim.o.undofile = true
 
@@ -70,5 +78,8 @@ vim.o.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.o.confirm = true
+
+-- Enables 24-bit RGB color in the |TUI|
+vim.o.termguicolors = true
 
 -- vim: ts=2 sts=2 sw=2 et
