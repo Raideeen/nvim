@@ -263,6 +263,15 @@ return {
             'zsh',
           },
         },
+        tinymist = {
+          formatterMode = 'typstyle',
+          exportPdf = 'onType',
+          semanticTokens = 'disable',
+          lint = {
+            enabled = true,
+            when = 'onSave',
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -285,9 +294,11 @@ return {
         'clang-format',
         'cpplint',
         'lua_ls',
-        'markdownlint',
+        'markdownlint', -- Markdown linter (show code style errors)
+        'mdformat', -- Markdown formatter
         'stylua', -- Used to format Lua code
         'beautysh',
+        'tinymist',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
