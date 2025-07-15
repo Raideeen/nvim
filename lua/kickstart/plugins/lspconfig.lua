@@ -299,6 +299,7 @@ return {
         'stylua', -- Used to format Lua code
         'beautysh',
         'tinymist',
+        'qmlls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

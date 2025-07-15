@@ -4,23 +4,13 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    bigfile = { enabled = true },
+    bigfile = { enabled = true }, -- Prevent LSPs to load bigfiles
     dashboard = { enabled = false }, -- same...
-    indent = { enabled = false }, -- might wanna see how to configure this first...
-    input = { enabled = true },
     notifier = {
       enabled = true,
       timeout = 3000,
     },
-    picker = { enabled = false },
-    scope = { enabled = true },
-    statuscolumn = { enabled = true },
-    words = { enabled = true },
-    styles = {
-      notification = {
-        -- wo = { wrap = true } -- Wrap notifications
-      },
-    },
+    picker = { enabled = true },
   },
   keys = {
     -- Top Pickers & Explorer
@@ -37,57 +27,6 @@ return {
         Snacks.picker.notifications()
       end,
       desc = 'Notification History',
-    },
-    -- find
-    {
-      '<leader>fg',
-      function()
-        Snacks.picker.git_files()
-      end,
-      desc = '[F]ind [g] Git Files',
-    },
-    {
-      '<leader>fp',
-      function()
-        Snacks.picker.projects()
-      end,
-      desc = 'Projects',
-    },
-    -- git
-    {
-      '<leader>gb',
-      function()
-        Snacks.picker.git_branches()
-      end,
-      desc = 'Git Branches',
-    },
-    {
-      '<leader>gl',
-      function()
-        Snacks.picker.git_log()
-      end,
-      desc = 'Git Log',
-    },
-    {
-      '<leader>gs',
-      function()
-        Snacks.picker.git_status()
-      end,
-      desc = '[G]it [s]tatus',
-    },
-    {
-      '<leader>gS',
-      function()
-        Snacks.picker.git_stash()
-      end,
-      desc = '[G]it [S]tash',
-    },
-    {
-      '<leader>gd',
-      function()
-        Snacks.picker.git_diff()
-      end,
-      desc = '[G]it [d]iff (Hunks)',
     },
     -- Grep
     {
@@ -220,21 +159,6 @@ return {
       end,
       desc = 'Goto Implementation',
     },
-    -- Other
-    -- {
-    --   '<leader>z',
-    --   function()
-    --     Snacks.zen()
-    --   end,
-    --   desc = 'Toggle Zen Mode',
-    -- },
-    -- {
-    --   '<leader>Z',
-    --   function()
-    --     Snacks.zen.zoom()
-    --   end,
-    --   desc = 'Toggle Zoom',
-    -- },
     {
       '<leader>.',
       function()
@@ -248,13 +172,6 @@ return {
         Snacks.scratch.select()
       end,
       desc = 'Select Scratch Buffer',
-    },
-    {
-      '<leader>bd',
-      function()
-        Snacks.bufdelete()
-      end,
-      desc = 'Delete Buffer',
     },
     {
       '<leader>cR',
@@ -292,29 +209,6 @@ return {
       end,
       desc = '[T]oggle [T]erminal',
     },
-    {
-      '<c-_>',
-      function()
-        Snacks.terminal()
-      end,
-      desc = 'which_key_ignore',
-    },
-    {
-      ']]',
-      function()
-        Snacks.words.jump(vim.v.count1)
-      end,
-      desc = 'Next Reference',
-      mode = { 'n', 't' },
-    },
-    {
-      '[[',
-      function()
-        Snacks.words.jump(-vim.v.count1)
-      end,
-      desc = 'Prev Reference',
-      mode = { 'n', 't' },
-    },
     -- {
     --   '<leader>N',
     --   desc = 'Neovim News',
@@ -328,11 +222,7 @@ return {
     --         wrap = false,
     --         signcolumn = 'yes',
     --         statuscolumn = ' ',
-    --         conceallevel = 3,
-    --       },
-    --     }
-    --   end,
-    -- },
+    --         conceallevel = 3, }, } end, },
   },
   init = function()
     vim.api.nvim_create_autocmd('User', {
@@ -353,12 +243,7 @@ return {
         Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map '<leader>uL'
         Snacks.toggle.diagnostics():map '<leader>ud'
         Snacks.toggle.line_number():map '<leader>ul'
-        Snacks.toggle.option('conceallevel', { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map '<leader>uc'
-        Snacks.toggle.treesitter():map '<leader>uT'
-        Snacks.toggle.option('background', { off = 'light', on = 'dark', name = 'Dark Background' }):map '<leader>ub'
-        Snacks.toggle.inlay_hints():map '<leader>uh'
         Snacks.toggle.indent():map '<leader>ug'
-        Snacks.toggle.dim():map '<leader>uD'
       end,
     })
   end,

@@ -30,6 +30,9 @@ return {
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
+      -- Useful for easily creating commands
+      local z_utils = require 'telescope._extensions.zoxide.utils'
+
       -- Telescope is a fuzzy finder that comes with a lot of different things that
       -- it can fuzzy find! It's more than just a "file finder", it can search
       -- many different aspects of Neovim, your workspace, LSP, and more!
@@ -65,6 +68,26 @@ return {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
+          ['zoxide'] = {
+            prompt_title = '[ Walking on the shoulders of giant... ]',
+            mappings = {
+              default = {
+                after_action = function(selection)
+                  print('Update to (' .. selection.z_score .. ') ' .. selection.path)
+                end,
+              },
+              ['<C-s>'] = {
+                before_action = function(selection)
+                  print 'before C-s'
+                end,
+                action = function(selection)
+                  vim.cmd.edit(selection.path)
+                end,
+              },
+              -- Opens the selected entry in a new split
+              ['<C-q>'] = { action = z_utils.create_basic_command 'split' },
+            },
+          },
         },
       }
 
@@ -84,6 +107,20 @@ return {
       -- vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>sr', builtin.oldfiles, { desc = '[S]earch [r]ecent files' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+
+      -- Window management keybindings
+      vim.keymap.set('n', '<leader>wh', '<C-w>h', { desc = '[W]indow move left' })
+      vim.keymap.set('n', '<leader>wj', '<C-w>j', { desc = '[W]indow move down' })
+      vim.keymap.set('n', '<leader>wk', '<C-w>k', { desc = '[W]indow move up' })
+      vim.keymap.set('n', '<leader>wl', '<C-w>l', { desc = '[W]indow move right' })
+      vim.keymap.set('n', '<leader>ws', '<C-w>s', { desc = '[W]indow [S]plit horizontal' })
+      vim.keymap.set('n', '<leader>wv', '<C-w>v', { desc = '[W]indow split [V]ertical' })
+      vim.keymap.set('n', '<leader>wq', '<C-w>q', { desc = '[W]indow [Q]uit' })
+      vim.keymap.set('n', '<leader>wo', '<C-w>o', { desc = '[W]indow [O]nly (close others)' })
+      vim.keymap.set('n', '<leader>ww', '<C-w>w', { desc = '[W]indow next [W]indow' })
+      vim.keymap.set('n', '<leader>wr', '<C-w>r', { desc = '[W]indow [R]otate' })
+      vim.keymap.set('n', '<leader>wx', '<C-w>x', { desc = '[W]indow e[X]change' })
+      vim.keymap.set('n', '<leader>w=', '<C-w>=', { desc = '[W]indow equalize' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()

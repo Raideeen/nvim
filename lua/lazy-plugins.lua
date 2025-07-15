@@ -60,7 +60,7 @@ require('lazy').setup({
 
   require 'custom/plugins/vim-tmux-navigator',
 
-  require 'custom/plugins/gruvbox-colorscheme',
+  require 'custom/plugins/gruvbox',
 
   require 'custom/plugins/base16-colorscheme',
 
@@ -77,6 +77,16 @@ require('lazy').setup({
   require 'custom/plugins/render-markdown',
 
   require 'custom/plugins/typst-preview',
+
+  require 'custom/plugins/lualine',
+
+  -- require 'custom/plugins/copilot',
+
+  -- require 'custom/plugins/copilot-lualine',
+
+  -- require 'custom/plugins/copilot-chat',
+
+  require 'custom/plugins/telescope-zoxide',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
