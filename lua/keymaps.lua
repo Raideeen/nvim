@@ -34,6 +34,20 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Window management keybindings
+vim.keymap.set('n', '<leader>wh', '<C-w>h', { desc = '[W]indow move left' })
+vim.keymap.set('n', '<leader>wj', '<C-w>j', { desc = '[W]indow move down' })
+vim.keymap.set('n', '<leader>wk', '<C-w>k', { desc = '[W]indow move up' })
+vim.keymap.set('n', '<leader>wl', '<C-w>l', { desc = '[W]indow move right' })
+vim.keymap.set('n', '<leader>ws', '<C-w>s', { desc = '[W]indow [S]plit horizontal' })
+vim.keymap.set('n', '<leader>wv', '<C-w>v', { desc = '[W]indow split [V]ertical' })
+vim.keymap.set('n', '<leader>wq', '<C-w>q', { desc = '[W]indow [Q]uit' })
+vim.keymap.set('n', '<leader>wo', '<C-w>o', { desc = '[W]indow [O]nly (close others)' })
+vim.keymap.set('n', '<leader>ww', '<C-w>w', { desc = '[W]indow next [W]indow' })
+vim.keymap.set('n', '<leader>wr', '<C-w>r', { desc = '[W]indow [R]otate' })
+vim.keymap.set('n', '<leader>wx', '<C-w>x', { desc = '[W]indow e[X]change' })
+vim.keymap.set('n', '<leader>w=', '<C-w>=', { desc = '[W]indow equalize' })
+
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })

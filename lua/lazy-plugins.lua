@@ -80,9 +80,9 @@ require('lazy').setup({
 
   require 'custom/plugins/lualine',
 
-  -- require 'custom/plugins/copilot',
+  require 'custom/plugins/copilot',
 
-  -- require 'custom/plugins/copilot-lualine',
+  require 'custom/plugins/copilot-lualine',
 
   -- require 'custom/plugins/copilot-chat',
 
