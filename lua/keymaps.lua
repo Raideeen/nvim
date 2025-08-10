@@ -45,6 +45,11 @@ vim.keymap.set('n', '<leader>wr', '<C-w>r', { desc = '[W]indow [R]otate' })
 vim.keymap.set('n', '<leader>wx', '<C-w>x', { desc = '[W]indow e[X]change' })
 vim.keymap.set('n', '<leader>w=', '<C-w>=', { desc = '[W]indow equalize' })
 
+-- Hovering
+vim.keymap.set('n', '<leader>k', function()
+  vim.lsp.buf.hover { focus = true, focusable = true }
+end, { desc = 'Hover definition under cursor' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 

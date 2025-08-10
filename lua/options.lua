@@ -5,6 +5,7 @@
 
 -- Make line numbers default
 vim.o.number = true
+
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
 vim.o.relativenumber = true
@@ -28,6 +29,12 @@ vim.o.breakindent = true
 
 -- Set auto indent
 vim.o.autoindent = true
+
+-- Set border to be rounded
+vim.o.winborder = 'single'
+
+-- Disable swapfile generation
+vim.o.swapfile = false
 
 -- Convert tab to spaces
 vim.o.expandtab = true

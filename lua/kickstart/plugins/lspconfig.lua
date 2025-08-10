@@ -29,6 +29,7 @@ return {
       -- Allows extra capabilities provided by blink.cmp
       'saghen/blink.cmp',
     },
+
     config = function()
       -- Brief aside: **What is LSP?**
       --
@@ -54,7 +55,6 @@ return {
       --
       -- If you're wondering about lsp vs treesitter, you can check out the wonderfully
       -- and elegantly composed help section, `:help lsp-vs-treesitter`
-
       --  This function gets run when an LSP attaches to a particular buffer.
       --    That is to say, every time a new file is opened that is associated with
       --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
@@ -73,7 +73,6 @@ return {
           end
 
           local sp = require 'snacks.picker'
-
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
           map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
@@ -297,6 +296,7 @@ return {
         'qmlls',
         'rust_analyzer',
         'omnisharp', -- C# lsp
+        'glsl_analyzer', -- GLSL lsp
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

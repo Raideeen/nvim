@@ -12,27 +12,27 @@ return {
     },
     picker = {
       enabled = true,
-      layout = 'telescope',
+      layout = 'telescope', -- Use 'telescope'-style layout
       layouts = {
         telescope = {
-          reverse = true,
+          reverse = true, -- Reverse the order of the layout (optional feature)
           layout = {
-            box = 'horizontal',
-            backdrop = false,
-            width = 0.8,
-            height = 0.5,
-            border = 'none',
+            box = 'horizontal', -- Main container arranges children horizontally
+            backdrop = false, -- No backdrop behind the picker
+            width = 0.8, -- Picker takes 80% of the available width
+            height = 0.5, -- Picker takes 50% of the available height
+            border = 'none', -- No border for the outer container
             {
-              box = 'vertical',
-              { win = 'list', title = ' Results ', title_pos = 'center', border = 'single' },
-              { win = 'input', height = 1, border = 'single', title = '{title} {live} {flags}', title_pos = 'center' },
+              box = 'vertical', -- Left section: stack children vertically
+              { win = 'list', title = ' Results ', title_pos = 'center', border = 'single' }, -- Results list window
+              { win = 'input', height = 1, border = 'single', title = '{title} {live} {flags}', title_pos = 'center' }, -- Input window for search/filter
             },
             {
-              win = 'preview',
-              title = '{preview:Preview}',
-              width = 0.45,
-              border = 'single',
-              title_pos = 'center',
+              win = 'preview', -- Right section: preview window
+              title = '{preview:Preview}', -- Dynamic title for preview
+              width = 0.45, -- Preview takes 45% of the width
+              border = 'single', -- Single border for preview window
+              title_pos = 'center', -- Center the preview title
             },
           },
         },
@@ -218,6 +218,13 @@ return {
         Snacks.picker.files { cwd = vim.fn.stdpath 'config' }
       end,
       desc = '[S]earch [N]eovim files',
+    },
+    {
+      '<leader>st',
+      function()
+        Snacks.picker.todo_comments()
+      end,
+      desc = '[S]earch [t]odo comments',
     },
     -- Toggles
     {
