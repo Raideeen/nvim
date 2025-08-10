@@ -10,9 +10,43 @@ return {
       enabled = true,
       timeout = 3000,
     },
-    picker = { enabled = true },
+    picker = {
+      enabled = true,
+      layout = 'telescope',
+      layouts = {
+        telescope = {
+          reverse = true,
+          layout = {
+            box = 'horizontal',
+            backdrop = false,
+            width = 0.8,
+            height = 0.5,
+            border = 'none',
+            {
+              box = 'vertical',
+              { win = 'list', title = ' Results ', title_pos = 'center', border = 'single' },
+              { win = 'input', height = 1, border = 'single', title = '{title} {live} {flags}', title_pos = 'center' },
+            },
+            {
+              win = 'preview',
+              title = '{preview:Preview}',
+              width = 0.45,
+              border = 'single',
+              title_pos = 'center',
+            },
+          },
+        },
+      },
+    },
   },
   keys = {
+    {
+      '<leader><leader>',
+      function()
+        Snacks.picker.buffers()
+      end,
+      desc = '[ ] Find existing buffers',
+    },
     -- Top Pickers & Explorer
     {
       '<leader>a',
@@ -37,7 +71,63 @@ return {
       desc = 'Visual selection or word',
       mode = { 'n', 'x' },
     },
+    {
+      '<leader>sg',
+      function()
+        Snacks.picker.grep()
+      end,
+      desc = '[S]earch by [g]rep',
+    },
+    {
+      '<leader>s/',
+      function()
+        Snacks.picker.grep { buffers = true }
+      end,
+      desc = '[S]earch [/] in Open Files',
+    },
+    {
+      '<leader>s.',
+      function()
+        Snacks.picker.grep { buffers = false }
+      end,
+      desc = '[S]earch [.] in Current Folder',
+    },
     -- search
+    {
+      '<leader>/',
+      function()
+        Snacks.picker.lines()
+      end,
+      desc = '[/] Fuzzily search in current buffer',
+    },
+    {
+      '<leader>sh',
+      function()
+        Snacks.picker.help()
+      end,
+      desc = '[S]earch [h]elp',
+    },
+    {
+      '<leader>sf',
+      function()
+        Snacks.picker.files { cwd = '.' }
+      end,
+      desc = '[S]earch [f]iles in current folder',
+    },
+    {
+      '<leader>sr',
+      function()
+        Snacks.picker.recent()
+      end,
+      desc = '[S]earch [r]ecent files',
+    },
+    {
+      '<leader>ss',
+      function()
+        Snacks.picker.commands()
+      end,
+      desc = '[S]earch [s]nacks commands',
+    },
     {
       '<leader>sr',
       function()
@@ -81,11 +171,11 @@ return {
       desc = '[S]earch Buffer [D]iagnostics',
     },
     {
-      '<leader>si',
+      '<leader>sI',
       function()
         Snacks.picker.icons()
       end,
-      desc = '[S]earch [i]cons',
+      desc = '[S]earch [I]cons',
     },
     {
       '<leader>sk',
@@ -120,8 +210,16 @@ return {
       function()
         Snacks.picker.undo()
       end,
-      desc = 'Undo History',
+      desc = '[S]earch [u]ndo history',
     },
+    {
+      '<leader>sn',
+      function()
+        Snacks.picker.files { cwd = vim.fn.stdpath 'config' }
+      end,
+      desc = '[S]earch [N]eovim files',
+    },
+    -- Toggles
     {
       '<leader>uC',
       function()
@@ -147,7 +245,7 @@ return {
     {
       'gr',
       function()
-        Snacks.picker.lsp_references()
+        Snacks.picker.lp_references()
       end,
       nowait = true,
       desc = 'References',
@@ -238,11 +336,6 @@ return {
         vim.print = _G.dd -- Override print to use snacks for `:=` command
 
         -- Create some toggle mappings
-        Snacks.toggle.option('spell', { name = 'Spelling' }):map '<leader>us'
-        Snacks.toggle.option('wrap', { name = 'Wrap' }):map '<leader>uw'
-        Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map '<leader>uL'
-        Snacks.toggle.diagnostics():map '<leader>ud'
-        Snacks.toggle.line_number():map '<leader>ul'
         Snacks.toggle.indent():map '<leader>ug'
       end,
     })

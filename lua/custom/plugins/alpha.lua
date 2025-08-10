@@ -62,10 +62,10 @@ return {
 
     dashboard.section.buttons.val = {
       -- dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
-      dashboard.button('b', '  > Browse files', ':Yazi<CR>'),
-      dashboard.button('z', '  > Browse Directories', ':Telescope zoxide list<CR>'),
-      dashboard.button('f', '󰈞  > Find file', ':Telescope find_files<CR>'),
-      dashboard.button('r', '  > Recent', ':Telescope oldfiles<CR>'),
+      dashboard.button('b', '  > Browse files', ':Oil<CR>'),
+      dashboard.button('z', '  > Browse Directories', '<cmd>lua require("snacks").picker.zoxide()<CR>'),
+      dashboard.button('f', '󰈞  > Find file', '<cmd>lua require("snacks").picker.files()<CR>'),
+      dashboard.button('r', '  > Recent', '<cmd>lua require("snacks").picker.recent()<CR>'),
     }
 
     dashboard.config.layout = {

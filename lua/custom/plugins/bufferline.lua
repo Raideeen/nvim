@@ -8,6 +8,10 @@ return {
     end
 
     vim.opt.termguicolors = true
-    bufferline.setup {}
+    bufferline.setup {
+      highlights = {
+        fill = { link = 'Normal' },
+      },
+    }
   end,
 }

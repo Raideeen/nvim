@@ -24,77 +24,49 @@ require('lazy').setup({
   -- include a plugin definition from file lua/path/name.lua
 
   require 'kickstart/plugins/gitsigns',
-
   require 'kickstart/plugins/which-key',
-
-  require 'kickstart/plugins/telescope',
-
   require 'kickstart/plugins/lspconfig',
-
   require 'kickstart/plugins/conform',
-
   require 'kickstart/plugins/blink-cmp',
-
   require 'kickstart/plugins/todo-comments',
-
   require 'kickstart/plugins/mini',
-
   require 'kickstart/plugins/treesitter',
 
-  -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
-  -- init.lua. If you want these files, they are in the repository, so you can just download them and
-  -- place them in the correct locations.
-
-  -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
-  --
-  --  Here are some example plugins that I've included in the Kickstart repository.
-  --  Uncomment any of the lines below to enable them (you will need to restart nvim).
-  --
+  -- Debugging
   require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
-  require 'kickstart.plugins.lint',
-  require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
 
+  -- Linting & Formatting
+  require 'kickstart.plugins.lint',
+
+  -- Editing Enhancements
+  require 'kickstart.plugins.autopairs',
+  -- require 'kickstart.plugins.indent_line',
+
+  -- UI Enhancements
+  require 'kickstart.plugins.neo-tree',
+  require 'custom/plugins/alpha',
+  require 'custom/plugins/bufferline',
+  require 'custom/plugins/lualine',
+  require 'custom/plugins/nvim-biscuits',
+  require 'custom/plugins/nvim-colorizer',
   require 'custom/plugins/snacks',
 
+  -- Colorschemes
+  require 'custom/plugins/colorschemes/base16-colorscheme',
+  require 'custom/plugins/colorschemes/gruvbox',
+
+  -- Navigation
+  require 'custom/plugins/follow-md-links',
+  require 'custom/plugins/oil',
   require 'custom/plugins/vim-tmux-navigator',
 
-  require 'custom/plugins/gruvbox',
-
-  require 'custom/plugins/base16-colorscheme',
-
-  require 'custom/plugins/oil',
-
-  require 'custom/plugins/alpha',
-
-  require 'custom/plugins/yazi',
-
-  require 'custom/plugins/nvim-colorizer',
-
-  require 'custom/plugins/bufferline',
-
-  require 'custom/plugins/render-markdown',
-
-  require 'custom/plugins/typst-preview',
-
-  require 'custom/plugins/lualine',
-
+  -- AI & Copilot
   require 'custom/plugins/copilot',
 
-  require 'custom/plugins/copilot-lualine',
-
-  require 'custom/plugins/copilot-chat',
-
-  require 'custom/plugins/telescope-zoxide',
-
-  require 'custom/plugins/follow-md-links',
-
+  -- Miscellaneous
   require 'custom/plugins/comfy-line-numbers',
-
-  require 'custom/plugins/nvim-biscuits',
-
-  require 'custom/plugins/twilight',
+  require 'custom/plugins/render-markdown',
+  require 'custom/plugins/typst-preview',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
