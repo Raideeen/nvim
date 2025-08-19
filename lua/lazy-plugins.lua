@@ -32,14 +32,16 @@ require('lazy').setup({
   require 'kickstart/plugins/mini',
   require 'kickstart/plugins/treesitter',
 
-  -- Debugging
+  -- Debugging & Compilation
   require 'kickstart.plugins.debug',
+  require 'custom.plugins.vim-dispatch',
 
   -- Linting & Formatting
   require 'kickstart.plugins.lint',
 
   -- Editing Enhancements
   require 'kickstart.plugins.autopairs',
+  require 'custom.plugins.nvim-surround',
   -- require 'kickstart.plugins.indent_line',
 
   -- UI Enhancements
@@ -47,7 +49,6 @@ require('lazy').setup({
   require 'custom/plugins/alpha',
   require 'custom/plugins/bufferline',
   require 'custom/plugins/lualine',
-  require 'custom/plugins/nvim-biscuits',
   require 'custom/plugins/nvim-colorizer',
   require 'custom/plugins/snacks',
 

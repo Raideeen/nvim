@@ -50,6 +50,14 @@ vim.keymap.set('n', '<leader>k', function()
   vim.lsp.buf.hover { focus = true, focusable = true }
 end, { desc = 'Hover definition under cursor' })
 
+-- Compilation for C programs
+vim.keymap.set(
+  'n',
+  '<leader>cp',
+  ":Start gcc -Wall -Wextra -g -O2 % -o %:r && ./%:r; printf '\\nProgram finished. Press Enter...'; read; rm %:r<CR>",
+  { desc = '[C]ompile and run C file' }
+)
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 

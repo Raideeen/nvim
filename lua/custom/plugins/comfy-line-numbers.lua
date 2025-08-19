@@ -1,7 +1,7 @@
 return {
   {
     'mluders/comfy-line-numbers.nvim',
-    lazy = true,
+    event = { 'BufReadPre', 'BufNewFile' },
     opts = {},
   },
 }
